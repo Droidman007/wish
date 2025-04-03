@@ -3,111 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Responsive Page</title>
     <style>
-        *{
-            font-family: Arial ,Verdana, Helvetica;
+        * {
+            font-family: Arial, Verdana, Helvetica;
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
-        body{
-            animation: bg 5s ease-in-out  infinite alternate ;
+        body {
+            animation: bg 5s ease-in-out infinite alternate;
             background-repeat: no-repeat;
             height: 100vh;
             width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .np{
-            width: 100vw;
-            display:flex;
+        .np {
+            width: 90%;
+            max-width: 500px;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
         }
-
-        .msg{
+        .msg, .nxt {
             display: flex;
-            background: #FFCCFF;
-            margin-top: 50px;
-            width: 400px;
-            height: 150px;
-            border: white;
-            border-radius: 20px;
-            box-shadow:0px 0px 10px #ffffff;
-            box-shadow:inset 0px 0px 10px #ffffff;
-            align-items: center;
             justify-content: center;
-            font-size: 20px;
+            align-items: center;
+            width: 80%;
+            max-width: 400px;
+            height: 60px;
+            border-radius: 20px;
+            box-shadow: inset 0px 0px 10px #ffffff;
+            font-size: 18px;
             font-weight: bold;
+            margin-top: 20px;
         }
-        .nxt{
-            display: flex;
+        .msg {
+            background: #FFCCFF;
+        }
+        .nxt {
             background: #fe5a5a;
-            margin-top: 50px;
-            width: 250px;
-            height: 50px;
-            border: white;
-            border-radius: 20px;
-            box-shadow:0px 0px 10px #ffffff;
-            box-shadow:inset 0px 0px 10px #ffffff;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
             color: white;
-
+        }
+        .emos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+        .heart {
+            font-size: 30px;
+            animation: hg 1s infinite alternate ease-in-out;
         }
         @keyframes bg {
-            0%{
-                background-image: linear-gradient(to right, #FFCCFF,
-            #d8b1ff );
-            }
-            100%{
-                background-image: linear-gradient(to right,#d8b1ff ,#FFCCFF );
-           
-            }
+            0% { background-image: linear-gradient(to right, #FFCCFF, #d8b1ff); }
+            100% { background-image: linear-gradient(to right, #d8b1ff, #FFCCFF); }
         }
-
-        .emos{
-            display: flex;
-            box-sizing: border-box;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            gap: 100px;
+        @keyframes hg {
+            0% { transform: translateY(10px); }
+            100% { transform: translateY(0px); }
         }
-        @keyframes hg{
-            0%{
-                bottom: 20px;
+        @media (max-width: 600px) {
+            .msg, .nxt {
+                width: 100%;
+                font-size: 16px;
+                height: 50px;
             }
-            100%{
-                bottom: 0;
+            .heart {
+                font-size: 24px;
             }
-        }
-        .heart{
-            padding: 20px 10%;
-            position: relative; /* Required for animation */
-            font-size: 30px; /* Make it bigger */
-            animation-name: hg;
-            animation-duration: 1s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out;
-            animation-direction: alternate;  
         }
     </style>
 </head>
 <body>
     <div class="np">
-    <div class="emos">
-        <div class="heart">🌸</div>
-        <div class="heart">❤️</div>
-        <div class="heart">✨</div>
-        <div class="heart">⭐</div>
-        <div class="heart">🤗</div>
-    </div>
-    <button class="msg">I have something for you😄</button>
-    <button class="nxt">Come with me</button>
+        <div class="emos">
+            <div class="heart">🌸</div>
+            <div class="heart">❤️</div>
+            <div class="heart">✨</div>
+            <div class="heart">⭐</div>
+            <div class="heart">🤗</div>
+        </div>
+        <button class="msg">I have something for you😄</button>
+        <button class="nxt">Come with me</button>
     </div>
 </body>
 </html>
-
-
