@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Page</title>
+    <title>Document</title>
     <style>
-        * {
+        *{
             font-family: Arial, Verdana, Helvetica;
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
-        body {
+        body{
             animation: bg 5s ease-in-out infinite alternate;
             background-repeat: no-repeat;
             height: 100vh;
@@ -20,62 +20,110 @@
             justify-content: center;
             align-items: center;
         }
-        .np {
-            width: 90%;
-            max-width: 500px;
+        .np{
+            width: 100vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px;
         }
+
         .msg, .nxt {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80%;
-            max-width: 400px;
-            height: 60px;
+            text-align: center;
+            border: none;
             border-radius: 20px;
-            box-shadow: inset 0px 0px 10px #ffffff;
-            font-size: 18px;
+            box-shadow: 0px 0px 10px #ffffff, inset 0px 0px 10px #ffffff;
             font-weight: bold;
-            margin-top: 20px;
         }
+
         .msg {
             background: #FFCCFF;
+            width: 400px;
+            height: 150px;
+            font-size: 20px;
+            margin-top: 50px;
         }
+
         .nxt {
             background: #fe5a5a;
+            width: 250px;
+            height: 50px;
+            font-size: 15px;
             color: white;
+            margin-top: 50px;
         }
-        .emos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 10px;
-        }
-        .heart {
-            font-size: 30px;
-            animation: hg 1s infinite alternate ease-in-out;
-        }
+
         @keyframes bg {
             0% { background-image: linear-gradient(to right, #FFCCFF, #d8b1ff); }
             100% { background-image: linear-gradient(to right, #d8b1ff, #FFCCFF); }
         }
-        @keyframes hg {
-            0% { transform: translateY(10px); }
-            100% { transform: translateY(0px); }
+
+        .emos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            gap: 50px;
+            flex-wrap: wrap;
         }
+
+        .heart {
+            padding: 20px;
+            font-size: 30px;
+            animation: hg 1s infinite alternate ease-in-out;
+            position: relative;
+        }
+
+        @keyframes hg {
+            0% { bottom: 20px; }
+            100% { bottom: 0; }
+        }
+
+        /* Responsive Design */
         @media (max-width: 600px) {
-            .msg, .nxt {
-                width: 100%;
+            .msg {
+                width: 90%;
+                height: 120px;
                 font-size: 16px;
-                height: 50px;
             }
+
+            .nxt {
+                width: 80%;
+                height: 45px;
+                font-size: 14px;
+            }
+
+            .emos {
+                gap: 30px;
+            }
+
             .heart {
                 font-size: 24px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .msg {
+                width: 350px;
+                height: 130px;
+            }
+
+            .nxt {
+                width: 220px;
+                height: 45px;
+            }
+
+            .emos {
+                gap: 40px;
+            }
+
+            .heart {
+                font-size: 28px;
             }
         }
     </style>
