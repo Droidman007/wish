@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             font-family: Arial, Verdana, Helvetica;
             padding: 0;
             margin: 0;
             box-sizing: border-box;
         }
-        body{
+        .show{
+            opacity: 1;
+        }
+
+        body {
             animation: bg 5s ease-in-out infinite alternate;
             background-repeat: no-repeat;
             height: 100vh;
@@ -20,7 +24,7 @@
             justify-content: center;
             align-items: center;
         }
-        .np{
+        .np {
             width: 100vw;
             display: flex;
             flex-direction: column;
@@ -50,6 +54,7 @@
         }
 
         .nxt {
+            transition: opacity 0.6s linear;
             background: #fe5a5a;
             width: 250px;
             height: 50px;
@@ -68,19 +73,37 @@
             align-items: center;
             justify-content: center;
             padding: 10px;
-            gap: 50px;
-            flex-wrap: wrap;
+            gap: 30px;
+            flex-wrap: nowrap; /* Prevents emojis from breaking into a new line */
+            overflow-x: auto; /* Allows scrolling if needed */
         }
 
         .heart {
-            padding: 20px;
+            padding: 10px;
             font-size: 30px;
             animation: hg 1s infinite alternate ease-in-out;
             position: relative;
         }
+        .nxt {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s linear, visibility 0.6s;
+}
+
+.nxt.show {
+    opacity: 1;
+    visibility: visible;
+}
+.gif{
+    background-image:url("1.gif") ;
+}
+a{
+    text-decoration: none;
+}
+
 
         @keyframes hg {
-            0% { bottom: 20px; }
+            0% { bottom: 10px; }
             100% { bottom: 0; }
         }
 
@@ -99,11 +122,15 @@
             }
 
             .emos {
-                gap: 30px;
+                gap: 15px;
+                justify-content: space-between; /* Distributes emojis evenly */
+                overflow-x: auto;
+                flex-wrap: nowrap;
             }
 
             .heart {
                 font-size: 24px;
+                padding: 5px;
             }
         }
 
@@ -119,7 +146,7 @@
             }
 
             .emos {
-                gap: 40px;
+                gap: 20px;
             }
 
             .heart {
@@ -137,8 +164,20 @@
             <div class="heart">⭐</div>
             <div class="heart">🤗</div>
         </div>
-        <button class="msg">I have something for you😄</button>
-        <button class="nxt">Come with me</button>
+        <button class="msg" id="mb">I have something for you😄</button>
+        <a href="greet.html">
+         <button class="nxt" id="nb">Come with me</button>
+        </a>
+        <div class="gif"></div>
     </div>
 </body>
+<script type="text/javascript">
+var btn = document.getElementById('mb');
+var b = document.getElementById('nb');
+
+btn.addEventListener('click', function() {
+  b.classList.toggle('show');
+});
+
+</script>
 </html>
