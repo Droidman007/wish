@@ -20,6 +20,7 @@
             text-align: center;
             padding: 20px;
             box-sizing: border-box;
+            position: relative;
         }
         .greeting {
             font-size: 3rem;
@@ -28,6 +29,9 @@
             z-index: 1;
             padding: 20px;
             max-width: 90%;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInSlide 1s ease-in-out forwards;
         }
         .poem {
             font-size: 1.5rem;
@@ -35,6 +39,51 @@
             margin-top: 20px;
             line-height: 1.5;
             z-index: 1;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInSlide 1s ease-in-out forwards 1s;
+        }
+        .next-button {
+            position: absolute;
+            bottom: 20px;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            background: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: glow 1s infinite alternate, fadeInButton 1s ease-in-out forwards;
+            opacity: 0;
+            display: none;
+        }
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fadeInButton {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px white;
+            }
+            to {
+                box-shadow: 0 0 20px white;
+            }
         }
         .sparkle, .firework {
             position: absolute;
@@ -84,11 +133,15 @@
                 font-size: 1.2rem;
                 max-width: 100%;
             }
+            .next-button {
+                font-size: 1.2rem;
+                padding: 10px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="greeting">This is for My Iron Women 🌸⭐✨</div>
+    <div class="greeting">Welcome to the Celebration!</div>
     <div class="poem">
         You took all my sorrows <br>
         And made me full of joy <br>
@@ -100,6 +153,7 @@
         I praise the god for you always <br>
         Cause you cured everything like magic ✨
     </div>
+    <button class="next-button" onclick="goToNextPage()">Next</button>
     <script>
         function createSparkle() {
             const sparkle = document.createElement("div");
@@ -132,7 +186,18 @@
             }, 1000);
         }
         setInterval(createFirework, 2000);
+
+        function goToNextPage() {
+            window.location.href = "nextpage.html";
+        }
+
+        setTimeout(() => {
+            let button = document.querySelector(".next-button");
+            button.style.display = "block";
+            setTimeout(() => {
+                button.style.opacity = "1";
+            }, 100);
+        }, 3000);
     </script>
 </body>
 </html>
-
