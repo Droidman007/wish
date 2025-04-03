@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: black;
+            overflow: hidden;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .greeting {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 1;
+            padding: 20px;
+            max-width: 90%;
+        }
+        .poem {
+            font-size: 1.5rem;
+            max-width: 80%;
+            margin-top: 20px;
+            line-height: 1.5;
+            z-index: 1;
+        }
+        .sparkle, .firework {
+            position: absolute;
+            border-radius: 50%;
+        }
+        .sparkle {
+            width: 5px;
+            height: 5px;
+            background: white;
+            box-shadow: 0 0 5px white;
+            animation: sparkleAnimation 1s linear infinite;
+        }
+        @keyframes sparkleAnimation {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0;
+            }
+        }
+        .firework {
+            width: 10px;
+            height: 10px;
+            background: white;
+            opacity: 1;
+            animation: fireworkAnimation 1s ease-out forwards;
+        }
+        @keyframes fireworkAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+        @media (max-width: 768px) {
+            .greeting {
+                font-size: 2rem;
+                padding: 10px;
+                max-width: 100%;
+            }
+            .poem {
+                font-size: 1.2rem;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="greeting">Welcome to the Celebration!</div>
+    <div class="poem">
+        You took all my sorrows <br>
+        And made me full of joy <br>
+        You bring light in the dark days <br>
+        Before that I was a broken toy <br><br>
+
+        You are a blessing <br>
+        Cause before you life was so tragic <br>
+        I praise the god for you always <br>
+        Cause you cured everything like magic ✨
+    </div>
+    <script>
+        function createSparkle() {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            document.body.appendChild(sparkle);
+
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+        setInterval(createSparkle, 100);
+
+        function createFirework() {
+            const firework = document.createElement("div");
+            firework.classList.add("firework");
+            document.body.appendChild(firework);
+
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * (window.innerHeight / 2);
+            firework.style.left = `${x}px`;
+            firework.style.top = `${y}px`;
+
+            setTimeout(() => {
+                firework.remove();
+            }, 1000);
+        }
+        setInterval(createFirework, 2000);
+    </script>
+</body>
+</html>
 
