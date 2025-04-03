@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greeting Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: black;
+            overflow: hidden;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        .message {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            z-index: 1;
+            padding: 20px;
+            max-width: 90%;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInSlide 1s ease-in-out forwards;
+        }
+        @keyframes fadeInSlide {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .sparkle, .firework {
+            position: absolute;
+            border-radius: 50%;
+        }
+        .sparkle {
+            width: 5px;
+            height: 5px;
+            background: white;
+            box-shadow: 0 0 5px white;
+            animation: sparkleAnimation 1s linear infinite;
+        }
+        @keyframes sparkleAnimation {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0);
+                opacity: 0;
+            }
+        }
+        .firework {
+            width: 10px;
+            height: 10px;
+            background: white;
+            opacity: 1;
+            animation: fireworkAnimation 1s ease-out forwards;
+        }
+        @keyframes fireworkAnimation {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+        @media (max-width: 768px) {
+            .message {
+                font-size: 2rem;
+                padding: 10px;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">You Are So Special To Me & You Are The Best! ✨❤️</div>
+    <script>
+        function createSparkle() {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            document.body.appendChild(sparkle);
+
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight;
+            sparkle.style.left = `${x}px`;
+            sparkle.style.top = `${y}px`;
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 1000);
+        }
+        setInterval(createSparkle, 100);
+
+        function createFirework() {
+            const firework = document.createElement("div");
+            firework.classList.add("firework");
+            document.body.appendChild(firework);
+
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * (window.innerHeight / 2);
+            firework.style.left = `${x}px`;
+            firework.style.top = `${y}px`;
+
+            setTimeout(() => {
+                firework.remove();
+            }, 1000);
+        }
+        setInterval(createFirework, 2000);
+    </script>
+</body>
+</html>
